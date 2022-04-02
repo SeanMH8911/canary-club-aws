@@ -1,0 +1,57 @@
+type Rental
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "username" }
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+    @index(
+      name: "postsByUsername"
+      sortKeyFields: ["username"]
+      queryField: "postsByUsername"
+    )
+  title: String
+  description: String
+  MaxNumberOfGuest: Int
+  MaxNumberOfAdults: Int
+  MaxNumberOfChildren: Int
+  NumberOfBedrooms: Int
+  NumberOfBaths: Int
+  RoomSize: Int
+  address: Address
+  location: Location
+  PricePerNight: Int
+  AdditionalCosts: String
+  username: String
+}
+type Address {
+  StreetName: String
+  Area: String
+  ZipCode: String
+  Island: String
+}
+type Location {
+  lat: Float
+  lon: Float
+}
+
+# type User @model {
+#   id: ID!
+#   FirstName: String!
+#   Surname: String!
+# }
+
+# type Post @model {
+#   id: ID!
+#   title: String!
+#   blog: Blog @belongsTo
+#   comments: [Comment] @hasMany
+# }
+
+# type Comment @model {
+#   id: ID!
+#   post: Post @belongsTo
+#   content: String!
+# }

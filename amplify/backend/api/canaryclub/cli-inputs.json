@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "canaryclub",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\d\\Desktop\\canary-club\\amplify\\backend\\api\\canaryclub\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-04-01T10:10:41.533Z",
+      "keyDescription": "public"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": [
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authcanaryclub39cf023d"
+      }
+    ]
+  }
+}
