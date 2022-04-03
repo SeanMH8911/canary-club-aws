@@ -55,5 +55,12 @@
         }
       }
     }
+  },
+  "storage": {
+    "canaryclubstorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

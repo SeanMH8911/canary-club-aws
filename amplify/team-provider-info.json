@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "canaryclub39cf023d": {}
+        "canaryclub39cf023d": {},
+        "true": {}
       }
     }
   }

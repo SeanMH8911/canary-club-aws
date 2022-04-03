@@ -46,5 +46,6 @@ export async function getStaticProps({ params }) {
     props: {
       rental: postData.data.getRental,
     },
+    revalidate: 1,
   };
 }

@@ -2,16 +2,15 @@ type Rental
   @model
   @auth(
     rules: [
-      { allow: owner, ownerField: "username" }
+      {
+        allow: owner
+        ownerField: "username"
+        operations: [create, read, update, delete]
+      }
       { allow: public, operations: [read] }
     ]
   ) {
   id: ID!
-    @index(
-      name: "postsByUsername"
-      sortKeyFields: ["username"]
-      queryField: "postsByUsername"
-    )
   title: String
   description: String
   MaxNumberOfGuest: Int
@@ -24,7 +23,13 @@ type Rental
   location: Location
   PricePerNight: Int
   AdditionalCosts: String
+  FeaturedImage: String
   username: String
+    @index(
+      name: "postsByUsername"
+      # sortKeyFields: ["username"]
+      queryField: "postsByUsername"
+    )
 }
 type Address {
   StreetName: String

@@ -70,15 +70,13 @@ export const listRentals = /* GraphQL */ `
 `;
 export const postsByUsername = /* GraphQL */ `
   query PostsByUsername(
-    $id: ID!
-    $username: ModelStringKeyConditionInput
+    $username: String!
     $sortDirection: ModelSortDirection
     $filter: ModelRentalFilterInput
     $limit: Int
     $nextToken: String
   ) {
     postsByUsername(
-      id: $id
       username: $username
       sortDirection: $sortDirection
       filter: $filter

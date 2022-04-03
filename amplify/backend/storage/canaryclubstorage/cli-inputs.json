@@ -1,0 +1,16 @@
+{
+  "resourceName": "canaryclubstorage",
+  "policyUUID": "6bb9cf27",
+  "bucketName": "canaryclub0dbc3d9511ea40f6928b22162c07fbf1",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

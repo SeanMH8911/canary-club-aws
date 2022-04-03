@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { API, Auth } from "aws-amplify";
-import { postsByUsername } from "../graphql/mutations";
+import { postsByUsername } from "../graphql/queries";
 import { deleteRental as deleteRentalMutation } from "../graphql/mutations";
 import "../configureAmplify";
 
@@ -13,6 +13,7 @@ export default function MyPosts() {
 
   async function fetchRentals() {
     const { username } = await Auth.currentAuthenticatedUser();
+    // console.log(username);
     const postData = await API.graphql({
       query: postsByUsername,
       variables: { username },
@@ -38,7 +39,7 @@ export default function MyPosts() {
       {rentals.map((rental, id) => (
         <div key={id} className="border-b border-gray-300	mt-8 pb-4">
           <h2 className="text-xl font-semibold">{rental.title}</h2>
-          <p className="text-gray-500 mt-2 mb-2">Author: {rental.username}</p>
+          {/* <p className="text-gray-500 mt-2 mb-2">Author: {rental.username}</p> */}
           <Link href={`/edit-rental/${rental.id}`}>
             <a className="text-sm mr-4 text-blue-500">Edit Rental</a>
           </Link>
