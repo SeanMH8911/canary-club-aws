@@ -12,20 +12,16 @@ export const onCreateRental = /* GraphQL */ `
       MaxNumberOfChildren
       NumberOfBedrooms
       NumberOfBaths
-      RoomSize
-      address {
-        StreetName
-        Area
-        ZipCode
-        Island
-      }
-      location {
-        lat
-        lon
-      }
       PricePerNight
       AdditionalCosts
+      FeaturedImage
       username
+      StreetName
+      Area
+      ZipCode
+      Island
+      lat
+      lon
       createdAt
       updatedAt
     }
@@ -42,20 +38,16 @@ export const onUpdateRental = /* GraphQL */ `
       MaxNumberOfChildren
       NumberOfBedrooms
       NumberOfBaths
-      RoomSize
-      address {
-        StreetName
-        Area
-        ZipCode
-        Island
-      }
-      location {
-        lat
-        lon
-      }
       PricePerNight
       AdditionalCosts
+      FeaturedImage
       username
+      StreetName
+      Area
+      ZipCode
+      Island
+      lat
+      lon
       createdAt
       updatedAt
     }
@@ -72,20 +64,16 @@ export const onDeleteRental = /* GraphQL */ `
       MaxNumberOfChildren
       NumberOfBedrooms
       NumberOfBaths
-      RoomSize
-      address {
-        StreetName
-        Area
-        ZipCode
-        Island
-      }
-      location {
-        lat
-        lon
-      }
       PricePerNight
       AdditionalCosts
+      FeaturedImage
       username
+      StreetName
+      Area
+      ZipCode
+      Island
+      lat
+      lon
       createdAt
       updatedAt
     }

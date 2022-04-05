@@ -5,7 +5,7 @@ import { postsByUsername } from "../graphql/queries";
 import { deleteRental as deleteRentalMutation } from "../graphql/mutations";
 import "../configureAmplify";
 
-export default function MyPosts() {
+export default function Mylistings() {
   const [rentals, setRentals] = useState([]);
   useEffect(() => {
     fetchRentals();

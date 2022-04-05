@@ -12,20 +12,16 @@ export const getRental = /* GraphQL */ `
       MaxNumberOfChildren
       NumberOfBedrooms
       NumberOfBaths
-      RoomSize
-      address {
-        StreetName
-        Area
-        ZipCode
-        Island
-      }
-      location {
-        lat
-        lon
-      }
       PricePerNight
       AdditionalCosts
+      FeaturedImage
       username
+      StreetName
+      Area
+      ZipCode
+      Island
+      lat
+      lon
       createdAt
       updatedAt
     }
@@ -47,20 +43,16 @@ export const listRentals = /* GraphQL */ `
         MaxNumberOfChildren
         NumberOfBedrooms
         NumberOfBaths
-        RoomSize
-        address {
-          StreetName
-          Area
-          ZipCode
-          Island
-        }
-        location {
-          lat
-          lon
-        }
         PricePerNight
         AdditionalCosts
+        FeaturedImage
         username
+        StreetName
+        Area
+        ZipCode
+        Island
+        lat
+        lon
         createdAt
         updatedAt
       }
@@ -92,20 +84,16 @@ export const postsByUsername = /* GraphQL */ `
         MaxNumberOfChildren
         NumberOfBedrooms
         NumberOfBaths
-        RoomSize
-        address {
-          StreetName
-          Area
-          ZipCode
-          Island
-        }
-        location {
-          lat
-          lon
-        }
         PricePerNight
         AdditionalCosts
+        FeaturedImage
         username
+        StreetName
+        Area
+        ZipCode
+        Island
+        lat
+        lon
         createdAt
         updatedAt
       }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Auth } from "aws-amplify";
+import Link from "next/link";
 
 function Profile({ setUiState }) {
   const [user, setUser] = useState(null);
@@ -9,6 +10,7 @@ function Profile({ setUiState }) {
   async function checkUser() {
     const user = await Auth.currentAuthenticatedUser();
     setUser(user.attributes);
+    console.log(user.attributes);
   }
   if (!user) return null;
   return (
