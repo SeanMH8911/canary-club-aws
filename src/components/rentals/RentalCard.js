@@ -18,7 +18,7 @@ function RentalCard({ rental }) {
     <>
       <div className=" flex flex-col md:flex-row  py-7 px-2 pr-4 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t ">
         <div className="relative h-52 w-80 flex-shrink-0">
-          <img src={FeaturedImage} className="w-[600px]" />
+          <img src={FeaturedImage} className=" rounded" />
         </div>
         <div className="flex flex-col flex-grow pt-2 md:pt-0 md:pl-5 ">
           <div className="flex justify-between">

@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       <Navbar />
-      <div className="py-8 px-16">
+      <div className="px-6 md:py-8 md:px-16">
         <Component {...pageProps} />
       </div>
     </div>

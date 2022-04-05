@@ -6,6 +6,7 @@ import { listRentals } from "../graphql/queries";
 import RentalCard from "../src/components/rentals/RentalCard";
 import { FaStar, FaRegHeart } from "react-icons/fa";
 import { Storage } from "aws-amplify";
+import SearchBar from "../src/components/navigation/SearchBar";
 
 function ViewRentals() {
   const [rentals, setRentals] = useState([]);
@@ -23,6 +24,9 @@ function ViewRentals() {
   return (
     <>
       <div>
+        <div className="justify-center">
+          <SearchBar />
+        </div>
         <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-2">
           Rentals
         </h1>
