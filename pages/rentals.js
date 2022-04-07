@@ -4,8 +4,6 @@ import Link from "next/link";
 import { API } from "aws-amplify";
 import { listRentals } from "../graphql/queries";
 import RentalCard from "../src/components/rentals/RentalCard";
-import { FaStar, FaRegHeart } from "react-icons/fa";
-import { Storage } from "aws-amplify";
 import SearchBar from "../src/components/navigation/SearchBar";
 
 function ViewRentals() {
@@ -18,7 +16,6 @@ function ViewRentals() {
       query: listRentals,
     });
     setRentals(postData.data.listRentals.items);
-    console.log(postData);
   }
 
   return (

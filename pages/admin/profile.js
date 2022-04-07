@@ -53,6 +53,7 @@ function ProfileUpdate({ onChange }) {
           />
           <input
             onChange={onChange}
+            type="date"
             name="birthdate"
             placeholder="DOB"
             value={user.birthdate}

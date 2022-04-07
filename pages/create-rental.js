@@ -21,7 +21,6 @@ const initialState = {
   lat: "",
   lon: "",
 };
-
 function CreateRental() {
   const [rental, setRental] = useState(initialState);
   const [image, setImage] = useState(null);
@@ -47,7 +46,9 @@ function CreateRental() {
 
   function onChange(e) {
     setRental(() => ({ ...rental, [e.target.name]: e.target.value }));
+    console.log(e);
   }
+
   async function createNewRental() {
     if (
       !title ||
@@ -103,41 +104,41 @@ function CreateRental() {
           name="title"
           placeholder="Title"
           value={rental.title}
-          className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"
+          className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 "
         />
         <textarea
           onChange={onChange}
           name="description"
           placeholder="description"
           value={rental.description}
-          className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"
+          className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 "
         />
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-3">
           <div>
             <input
               onChange={onChange}
               name="MaxNumberOfGuest"
-              placeholder="Maximum number of guests"
+              placeholder="Number of guests"
               value={rental.MaxNumberOfGuest}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500"
             />
           </div>
           <div>
             <input
               onChange={onChange}
               name="MaxNumberOfAdults"
-              placeholder="Maximum number of adults"
+              placeholder="Number of adults"
               value={rental.MaxNumberOfAdults}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
           <div>
             <input
               onChange={onChange}
               name="MaxNumberOfChildren"
-              placeholder="Maximum number of children"
+              placeholder="Number of children"
               value={rental.MaxNumberOfChildren}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
           <div>
@@ -146,7 +147,7 @@ function CreateRental() {
               name="NumberOfBedrooms"
               placeholder="Number of bedrooms"
               value={rental.NumberOfBedrooms}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
           <div>
@@ -155,7 +156,7 @@ function CreateRental() {
               name="NumberOfBaths"
               placeholder="Number of baths"
               value={rental.NumberOfBaths}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
           <div>
@@ -164,7 +165,7 @@ function CreateRental() {
               name="PricePerNight"
               placeholder="Price Per Night (£)"
               value={rental.PricePerNight}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
           <div>
@@ -173,20 +174,28 @@ function CreateRental() {
               name="AdditionalCosts"
               placeholder="Additional Costs (£) "
               value={rental.AdditionalCosts}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
         </div>
         <h2 className="text-3xl font-semibold tracking-wide mt-6">Address</h2>
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-3">
           <div>
-            <input
+            <select
+              name="Island"
+              value={rental.island}
               onChange={onChange}
-              name="StreetName"
-              placeholder="Street Name"
-              value={rental.StreetName}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
-            />
+              placeholder={"Select Island"}
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
+            >
+              <option value="" disabled selected hidden>
+                Select Island
+              </option>
+              <option value="Tenerife">Tenerife</option>
+              <option value="Lanzarote">Lanzarote</option>
+              <option value="Fuerteventura">Fuerteventura</option>
+              <option value="Gran Canaria">Gran Canaria</option>
+            </select>
           </div>
           <div>
             <input
@@ -194,34 +203,36 @@ function CreateRental() {
               name="Area"
               placeholder="Area"
               value={rental.Area}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
+          <div>
+            <input
+              onChange={onChange}
+              name="StreetName"
+              placeholder="Street Name"
+              value={rental.StreetName}
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
+            />
+          </div>
+
           <div>
             <input
               onChange={onChange}
               name="ZipCode"
               placeholder="Zip Code"
               value={rental.ZipCode}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
-          <div>
-            <input
-              onChange={onChange}
-              name="Island"
-              placeholder="Island"
-              value={rental.Island}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
-            />
-          </div>
+
           <div>
             <input
               onChange={onChange}
               name="lat"
               placeholder="Latitude"
               value={rental.lat}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
           <div>
@@ -230,7 +241,7 @@ function CreateRental() {
               name="lon"
               placeholder="Longitude"
               value={rental.lon}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>
         </div>

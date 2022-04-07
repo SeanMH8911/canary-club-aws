@@ -27,7 +27,8 @@ function Navbar() {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-white-500 p-6">
       <div className="flex items-center flex-shrink-0  mr-6">
-        <Link href="/">
+        {/* Does not hide mobile nav */}
+        <Link href="/" onClick={() => setMenuVisibility(!isMenuVisible)}>
           <span className="mr-6 cursor-pointer">Home</span>
         </Link>
       </div>
@@ -53,7 +54,10 @@ function Navbar() {
         } flex flex-row overflow-hidden w-full lg:h-full flex-grow lg:flex lg:items-center lg:w-auto`}
       >
         <div className=" lg:flex-grow ">
-          <Link href="/rentals">
+          <Link
+            href="/rentals"
+            onClick={() => setMenuVisibility(!isMenuVisible)}
+          >
             <span className="cursor-pointer block mt-4 lg:inline-block lg:mt-0 mr-4">
               Rentals
             </span>

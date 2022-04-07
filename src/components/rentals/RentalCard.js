@@ -1,4 +1,4 @@
-import { FaStar, FaRegHeart } from "react-icons/fa";
+import { FaStar, FaRegHeart, FaBed, FaShower, FaUsers } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Storage } from "aws-amplify";
 import Image from "next/image";
@@ -27,10 +27,14 @@ function RentalCard({ rental }) {
           </div>
           <h4 className="text-xl">{rental.title}</h4>
           <div className="border-b w-10 pt-2" />
-
-          <p className="pt-2 text-sm text-gray-500 flex-grow">
-            {/* {rental.description} */}
+          <p className="flex pt-2 text-sm text-gray-500">
+            {rental.Island} - {rental.Area}
           </p>
+          <div className="flex text-sm text-gray-400">
+            <p className="">{rental.MaxNumberOfGuest} Guests -</p>
+            <p className="ml-1">{rental.NumberOfBedrooms} Beds -</p>
+            <p className="ml-1">{rental.NumberOfBaths} Bathroom</p>
+          </div>
           <div className="flex justify-between items-end pt-5">
             <p className="flex items-center">
               <FaStar className="h-5 text-red-400" />
