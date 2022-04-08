@@ -49,7 +49,7 @@ function SearchBar({ placeholder }) {
             placeholder={placeholder || "Start your search"}
           />
           <FaSearch
-            className="hidden md:inline-flex w-10 h-8 bg-red-400 text-white rounded-full 
+            className="hidden md:inline-flex w-8 h-8 bg-red-400 text-white rounded-full 
         p-1 cursor-pointer md:mx-2"
           />
         </div>

@@ -32,7 +32,7 @@ type Rental
   ZipCode: String
   Island: String
   lat: Float
-  lon: Float
+  lng: Float
 }
 
 type User

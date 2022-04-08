@@ -72,9 +72,9 @@ function App() {
   return (
     <div className="bg-gray-50 min-h-screen">
       <div className="flex flex-col items-center">
-        <div className="max-w-full sm:w-540 mt-14">
+        <div className="max-w-full sm:w-540 md:mt-14">
           <div className="mb-8"></div>
-          <div className="bg-white py-14 px-16 shadow-form rounded">
+          <div className="bg-white p-6 md:py-14 md:px-16 shadow-form rounded">
             {!uiState ||
               (uiState === "loading" && (
                 <p className="font-bold">Loading ...</p>

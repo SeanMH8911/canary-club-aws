@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Auth, Hub } from "aws-amplify";
 import "../../../configureAmplify";
+import { FaHouseUser } from "react-icons/fa";
 
 function Navbar() {
   const [signedInUser, setSignedInUser] = useState(false);
   const [isMenuVisible, setMenuVisibility] = useState(false);
+  const [open, setOpen] = useState(true);
   useEffect(() => {
     authListener();
   });
@@ -25,93 +27,102 @@ function Navbar() {
   }
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-white-500 p-6">
+    <nav className="flex items-center justify-between flex-wrap bg-white-500 p-6 ">
       <div className="flex items-center flex-shrink-0  mr-6">
-        {/* Does not hide mobile nav */}
         <Link href="/" onClick={() => setMenuVisibility(!isMenuVisible)}>
           <span className="mr-6 cursor-pointer">Home</span>
         </Link>
       </div>
-      <div className="block lg:hidden">
-        <button
-          onClick={() => setMenuVisibility(!isMenuVisible)}
-          className="flex items-center px-3 py-2 border rounded text-black-600 border-black-400 hover:text-pink-600 hover:border-pink-600"
-          data-cy="mmenu-btn"
-        >
-          <svg
-            className="fill-current h-3 w-3"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-        </button>
+
+      <div className=" flex-grow ">
+        <Link href="/rentals" onClick={() => setMenuVisibility(!isMenuVisible)}>
+          <span className="cursor-pointer block lg:inline-block lg:mt-0 mr-4">
+            Rentals
+          </span>
+        </Link>
+        {/* <Link href="/tours">
+          <span className="cursor-pointer block mt-4 lg:inline-block lg:mt-0 mr-4">
+            Tours
+          </span>
+        </Link>
+        <Link href="/activities">
+          <span className="cursor-pointer block mt-4 lg:inline-block lg:mt-0 mr-4">
+            Activities
+          </span>
+        </Link> */}
       </div>
-      <div
-        className={`${
-          isMenuVisible ? "max-h-full" : "h-0"
-        } flex flex-row overflow-hidden w-full lg:h-full flex-grow lg:flex lg:items-center lg:w-auto`}
-      >
-        <div className=" lg:flex-grow ">
-          <Link
-            href="/rentals"
-            onClick={() => setMenuVisibility(!isMenuVisible)}
-          >
-            <span className="cursor-pointer block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Rentals
-            </span>
-          </Link>
-          <Link href="/tours">
-            <span className="cursor-pointer block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Tours
-            </span>
-          </Link>
-          <Link href="/activities">
-            <span className="cursor-pointer block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Activities
-            </span>
-          </Link>
+      <div className="">
+        <button
+          onClick={() => setOpen(!open)}
+          className="border-2 border-gray-500 rounded p-1 hover:bg-pink-600"
+        >
+          <FaHouseUser size="30" className="text-pink-600 hover:text-white" />
+        </button>
+        {!open && (
+          <>
+            <nav
+              id="mobileNav"
+              className="flex flex-row justify-between flex-wrap border-2 bg-white border-gray-500 rounded"
+            >
+              <div className="">
+                {signedInUser && (
+                  <Link href="/admin/profile">
+                    <div
+                      className=" cursor-pointer my-2 py-4 px-20  w-full rounded hover:bg-slate-400 hover:text-white"
+                      onClick={() => setOpen(!open)}
+                    >
+                      <span className="  ">Profile</span>
+                    </div>
+                  </Link>
+                )}
 
-          <Link href="/create-rental">
-            <span className=" cursor-pointer block mt-4 lg:inline-block lg:mt-0 mr-4">
-              Create Rental
-            </span>
-          </Link>
+                {signedInUser && (
+                  <Link href="/create-rental">
+                    <div
+                      className=" cursor-pointer my-2 py-4 px-20  w-full rounded hover:bg-slate-400 hover:text-white"
+                      onClick={() => setOpen(!open)}
+                    >
+                      <span className="  ">Create Rental</span>
+                    </div>
+                  </Link>
+                )}
 
-          {signedInUser && (
-            <Link href="/admin/profile">
-              <span className=" cursor-pointer block mt-4 lg:inline-block lg:mt-0 mr-4">
-                Profile
-              </span>
-            </Link>
-          )}
-          {signedInUser && (
-            <Link href="/my-listings">
-              <span className=" cursor-pointer block mt-4 lg:inline-block lg:mt-0 mr-4">
-                My Listings
-              </span>
-            </Link>
-          )}
-        </div>
-        <div className="flex-col-reverse flex lg:flex-row">
-          <div className="lg:flex items-center">
-            {!signedInUser && (
-              <Link href="/auth">
-                <span className="block lg:inline-block lg:mt-0 cursor-pointer text-white w-full mt-1 bg-pink-600 p-1 rounded">
-                  Sign In
-                </span>
-              </Link>
-            )}
-            {signedInUser && (
-              <Link href="/auth">
-                <span className=" block lg:inline-block lg:mt-0 cursor-pointer text-white w-full mt-1 bg-pink-600 p-1 rounded">
-                  Sign Out
-                </span>
-              </Link>
-            )}
-          </div>
-        </div>
+                {signedInUser && (
+                  <Link href="/my-listings">
+                    <div
+                      className=" cursor-pointer my-2 py-4 px-20  w-full rounded hover:bg-slate-400 hover:text-white"
+                      onClick={() => setOpen(!open)}
+                    >
+                      <span className=" ">My Listings</span>
+                    </div>
+                  </Link>
+                )}
+
+                {!signedInUser && (
+                  <Link href="/auth">
+                    <div
+                      className="cursor-pointer  my-2 py-4 px-20  w-full rounded hover:bg-slate-400 hover:text-white"
+                      onClick={() => setOpen(!open)}
+                    >
+                      <span className="">Sign In</span>
+                    </div>
+                  </Link>
+                )}
+
+                {signedInUser && (
+                  <Link href="/auth">
+                    <div
+                      className=" cursor-pointer  my-2 py-4 px-20  w-full rounded hover:bg-slate-400 hover:text-white"
+                      onClick={() => setOpen(!open)}
+                    >
+                      <span className="">Sign Out</span>
+                    </div>
+                  </Link>
+                )}
+              </div>
+            </nav>
+          </>
+        )}
       </div>
     </nav>
   );

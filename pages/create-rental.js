@@ -186,7 +186,7 @@ function CreateRental() {
               value={rental.island}
               onChange={onChange}
               placeholder={"Select Island"}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
+              className="border-b p-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             >
               <option value="" disabled selected hidden>
                 Select Island
@@ -261,7 +261,7 @@ function CreateRental() {
           </button>
           <button
             type="button"
-            className="mb-4 bg-blue-600 text-white font-semibold px-8 py-2 rounded-lg"
+            className="mt-4 mb-4 bg-blue-600 text-white font-semibold px-8 py-2 rounded-lg"
             onClick={createNewRental}
           >
             Create Rental

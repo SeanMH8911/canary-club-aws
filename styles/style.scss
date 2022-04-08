@@ -21,3 +21,12 @@ a {
 .rdrDefinedRangesWrapper{
     display: none;
 }
+
+#mobileNav{
+    position: absolute;
+    top: 80px;
+    right: 0;
+    height: auto;
+    z-index: 2;
+    margin-right: 22px;
+}

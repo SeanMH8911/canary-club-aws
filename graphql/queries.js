@@ -21,7 +21,7 @@ export const getRental = /* GraphQL */ `
       ZipCode
       Island
       lat
-      lon
+      lng
       createdAt
       updatedAt
     }
@@ -52,7 +52,7 @@ export const listRentals = /* GraphQL */ `
         ZipCode
         Island
         lat
-        lon
+        lng
         createdAt
         updatedAt
       }
@@ -93,7 +93,7 @@ export const postsByUsername = /* GraphQL */ `
         ZipCode
         Island
         lat
-        lon
+        lng
         createdAt
         updatedAt
       }

@@ -76,17 +76,17 @@ function ProfileUpdate({ onChange }) {
   if (!user) return null;
   return (
     <>
-      <div className="grid grid-cols-2">
+      <div className="grid">
         <div className="flex items-center">
           <p className="text-xl font-black ">Welcome, {user.FirstName}</p>
         </div>
         <div className="justify-self-end"></div>
-        <div className="flex flex-col">
+        <div className="flex flex-col max-w-[400px]">
           <input
             name="email"
             placeholder="E-Mail"
             value={user.email}
-            className="border-b pb-2 text-lg my-5 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
+            className="w-full border-b pb-2 text-lg my-5 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
           />
           <input
             onChange={onChange}
@@ -161,15 +161,6 @@ function ProfileUpdate({ onChange }) {
               onClick={updateUserDetails}
             >
               Update profile
-            </button>
-            <button
-              onClick={() => {
-                Auth.signOut();
-                router.push("/");
-              }}
-              className=" mb-4 mt-4 bg-pink-600 text-white font-semibold px-8 py-2 rounded-lg float-right"
-            >
-              Sign Out
             </button>
           </div>
         </div>

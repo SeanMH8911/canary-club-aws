@@ -21,7 +21,7 @@ export const onCreateRental = /* GraphQL */ `
       ZipCode
       Island
       lat
-      lon
+      lng
       createdAt
       updatedAt
     }
@@ -47,7 +47,7 @@ export const onUpdateRental = /* GraphQL */ `
       ZipCode
       Island
       lat
-      lon
+      lng
       createdAt
       updatedAt
     }
@@ -73,7 +73,7 @@ export const onDeleteRental = /* GraphQL */ `
       ZipCode
       Island
       lat
-      lon
+      lng
       createdAt
       updatedAt
     }
