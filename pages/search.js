@@ -8,39 +8,24 @@ import RentalCard from "../src/components/rentals/RentalCard";
 import Link from "next/link";
 
 function Search() {
-  const [rentals, setRentals] = useState([]);
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-  async function fetchPosts() {
-    const postData = await API.graphql({
-      query: listRentals,
-      filter: {
-        Island: {
-          eq: { location },
-        },
-      },
-    });
-    setRentals(postData.data.listRentals.items);
-  }
-
-  // useEffect(() => {
-  //   fetchPosts();
-  // }, []);
-  // async function fetchPosts() {
-  //   const postData = await API.graphql(
-  //     graphqlOperation,
-  //     listRentals({ filter: { Island: { eq: { location } } } })
-  //   );
-
-  //   setRentals(postData.data.listRentals.items);
-  // }
-
   const router = useRouter();
   const { location, startDate, endDate, noOfGuests } = router.query;
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
+  const [rentals, setRentals] = useState([]);
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+  async function fetchPosts() {
+    const postData = await API.graphql(
+      graphqlOperation(listRentals, {
+        filter: { Island: { eq: location } },
+      })
+    );
+    setRentals(postData.data.listRentals.items);
+  }
+
   return (
     <div>
       <SearchBar

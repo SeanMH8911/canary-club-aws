@@ -79,3 +79,60 @@ export const onDeleteRental = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser($id: String) {
+    onCreateUser(id: $id) {
+      id
+      email
+      FirstName
+      Surname
+      dateOfBirth
+      phoneNumber
+      country
+      streetAddress
+      city
+      county
+      postCode
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser($id: String) {
+    onUpdateUser(id: $id) {
+      id
+      email
+      FirstName
+      Surname
+      dateOfBirth
+      phoneNumber
+      country
+      streetAddress
+      city
+      county
+      postCode
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser($id: String) {
+    onDeleteUser(id: $id) {
+      id
+      email
+      FirstName
+      Surname
+      dateOfBirth
+      phoneNumber
+      country
+      streetAddress
+      city
+      county
+      postCode
+      createdAt
+      updatedAt
+    }
+  }
+`;

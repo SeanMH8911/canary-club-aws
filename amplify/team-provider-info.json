@@ -16,6 +16,12 @@
         "true": {},
         "canaryclub053de5d5053de5d5": {},
         "canaryclub39cf023d": {}
+      },
+      "function": {
+        "canaryclub08e7ab8b": {
+          "deploymentBucketName": "amplify-canaryclub-dev-133456-deployment",
+          "s3Key": "amplify-builds/canaryclub08e7ab8b-4c582b51306e675a4759-build.zip"
+        }
       }
     }
   }

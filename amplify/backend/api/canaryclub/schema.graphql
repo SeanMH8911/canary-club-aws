@@ -35,6 +35,27 @@ type Rental
   lon: Float
 }
 
+type User
+  @model
+  @auth(
+    rules: [
+      { allow: groups, groups: ["Admin"] }
+      { allow: owner, ownerField: "id", operations: [read, update, delete] }
+    ]
+  ) {
+  id: ID!
+  email: String!
+  FirstName: String
+  Surname: String
+  dateOfBirth: String
+  phoneNumber: String
+  country: String
+  streetAddress: String
+  city: String
+  county: String
+  postCode: String
+}
+
 # type User
 #   @model
 #   @auth(
