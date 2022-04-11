@@ -26,8 +26,8 @@ function SearchBar({ placeholder }) {
       query: {
         location: (searchInput =
           searchInput.charAt(0).toUpperCase() + searchInput.slice(1)),
-        startDate: startDate.toISOString(),
-        endDate: endDate.toISOString(),
+        arrival: startDate.toISOString(),
+        departure: endDate.toISOString(),
         noOfGuests,
       },
     });
@@ -40,7 +40,7 @@ function SearchBar({ placeholder }) {
   return (
     <>
       <div className="">
-        <div className="flex items-center border-2 rounded-full py-2 shadow-sm max-w-[400px] m-auto">
+        <div className="flex items-center border-2 border-gray-500 rounded  py-2 shadow-sm max-w-[400px] m-auto">
           <input
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
@@ -49,7 +49,7 @@ function SearchBar({ placeholder }) {
             placeholder={placeholder || "Start your search"}
           />
           <FaSearch
-            className="hidden md:inline-flex w-8 h-8 bg-red-400 text-white rounded-full 
+            className="hidden md:inline-flex w-8 h-8 text-pink-600  rounded 
         p-1 cursor-pointer md:mx-2"
           />
         </div>
@@ -66,7 +66,7 @@ function SearchBar({ placeholder }) {
                 <h2 className="text-2xl flex-grow font-semibold">
                   Number of Guests
                 </h2>
-                <FaUsers className="h-5" />
+                {/* <FaUsers className="" size={10} /> */}
                 <input
                   value={noOfGuests}
                   onChange={(e) => setNoOfGuests(e.target.value)}

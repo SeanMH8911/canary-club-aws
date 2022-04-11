@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { API, Auth } from "aws-amplify";
-import { postsByUsername } from "../graphql/queries";
-import { deleteRental as deleteRentalMutation } from "../graphql/mutations";
-import "../configureAmplify";
+import { postsByUsername } from "../../graphql/queries";
+import { deleteRental as deleteRentalMutation } from "../../graphql/mutations";
+import "../../configureAmplify";
 
 export default function Mylistings() {
   const [rentals, setRentals] = useState([]);
@@ -43,7 +43,7 @@ export default function Mylistings() {
           <Link href={`/edit-rental/${rental.id}`}>
             <a className="text-sm mr-4 text-blue-500">Edit Rental</a>
           </Link>
-          <Link href={`/rentals/${rental.id}`}>
+          <Link href={`/admin/${rental.id}`}>
             <a className="text-sm mr-4 text-blue-500">View Rental</a>
           </Link>
           <button

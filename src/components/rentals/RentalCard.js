@@ -1,9 +1,8 @@
 import { FaStar, FaRegHeart, FaBed, FaShower, FaUsers } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Storage } from "aws-amplify";
-import Image from "next/image";
 
-function RentalCard({ rental }) {
+function RentalCard({ rental, NoNights }) {
   const [FeaturedImage, setFeaturedImage] = useState(null);
   useEffect(() => {
     updateFeaturedImage();
@@ -14,6 +13,9 @@ function RentalCard({ rental }) {
       setFeaturedImage(imageKey);
     }
   }
+  const PricePerNight = rental.PricePerNight;
+  const total = PricePerNight * NoNights;
+
   return (
     <>
       <div className=" flex flex-col md:flex-row  py-7 px-2 pr-4 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t ">
@@ -41,7 +43,12 @@ function RentalCard({ rental }) {
             </p>
             <div>
               <p className="text-lg font-semibold pb-2 lg:text-2xl">
-                £{rental.PricePerNight}
+                £{PricePerNight}
+                <span className="text-sm text-gray-500 pl-1">/night</span>
+              </p>
+              <p className="text-lg  pb-2 text-gray-500 ">
+                £{total}
+                <span className="text-sm text-gray-500 pl-1">/total</span>
               </p>
               <p className="text-right font-extralight">{}</p>
             </div>

@@ -1,7 +1,7 @@
 import { API, graphqlOperation } from "aws-amplify";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { format } from "date-fns";
+import { format, differenceInDays } from "date-fns";
 import SearchBar from "../src/components/navigation/SearchBar";
 import { listRentals } from "../graphql/queries";
 import RentalCard from "../src/components/rentals/RentalCard";
@@ -9,15 +9,14 @@ import Link from "next/link";
 import Map from "../src/components/Map/Map";
 import { useLoadScript } from "@react-google-maps/api";
 
-function Search() {
+function Search({}) {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-    libraries: ["places"],
   });
   const router = useRouter();
-  const { location, startDate, endDate, noOfGuests } = router.query;
-  const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
-  const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
+  const { location, arrival, departure, noOfGuests } = router.query;
+  const formattedStartDate = format(new Date(arrival), "dd MMMM yy");
+  const formattedEndDate = format(new Date(departure), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
   const [rentals, setRentals] = useState([]);
   useEffect(() => {
@@ -32,10 +31,16 @@ function Search() {
     setRentals(postData.data.listRentals.items);
   }
 
+  const startDateN = format(new Date(formattedStartDate), "yyyy M dd");
+  const endDateN = format(new Date(formattedEndDate), "yyyy M dd");
+  const NoNights = differenceInDays(new Date(endDateN), new Date(startDateN));
+
   return (
     <div>
       <SearchBar
         rentals={rentals}
+        startDate={arrival}
+        endDate={departure}
         placeholder={`${location}  | ${range} | ${noOfGuests}`}
       />
 
@@ -58,17 +63,28 @@ function Search() {
 
             <div className="flex flex-col">
               {rentals.map((rental, id) => (
-                <Link key={id} href={`/rentals/${rental.id}`}>
-                  <a>
-                    <RentalCard rental={rental} />
-                  </a>
-                </Link>
+                <a
+                  key={id}
+                  onClick={() =>
+                    router.push({
+                      pathname: `/rentals/${rental.id}`,
+                      query: {
+                        arrival,
+                        departure,
+                        noOfGuests,
+                        NoNights,
+                      },
+                    })
+                  }
+                >
+                  <RentalCard key={id} rental={rental} NoNights={NoNights} />
+                </a>
               ))}
             </div>
           </section>
         </main>
         <div className=" hidden md:inline sticky top-0 mt-[184px] h-screen w-[600px] ">
-          {isLoaded && <Map />}
+          {isLoaded && <Map rentals={rentals} />}
         </div>
       </div>
     </div>

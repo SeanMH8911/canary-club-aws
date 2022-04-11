@@ -19,7 +19,7 @@ const initialState = {
   ZipCode: "",
   Island: "",
   lat: "",
-  lon: "",
+  lng: "",
 };
 function CreateRental() {
   const [rental, setRental] = useState(initialState);
@@ -40,7 +40,7 @@ function CreateRental() {
     ZipCode,
     Island,
     lat,
-    lon,
+    lng,
   } = rental;
   const router = useRouter();
 
@@ -65,7 +65,7 @@ function CreateRental() {
       !ZipCode ||
       !Island ||
       !lat ||
-      !lon
+      !lng
     )
       return;
     const id = uuid();
@@ -109,10 +109,10 @@ function CreateRental() {
         <textarea
           onChange={onChange}
           name="description"
-          placeholder="description"
           value={rental.description}
           className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 "
         />
+
         <div className="grid grid-cols-1 md:grid-cols-3">
           <div>
             <input
@@ -238,9 +238,9 @@ function CreateRental() {
           <div>
             <input
               onChange={onChange}
-              name="lon"
+              name="lng"
               placeholder="Longitude"
-              value={rental.lon}
+              value={rental.lng}
               className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
             />
           </div>

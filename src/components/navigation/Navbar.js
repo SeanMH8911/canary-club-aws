@@ -88,7 +88,7 @@ function Navbar() {
                 )}
 
                 {signedInUser && (
-                  <Link href="/my-listings">
+                  <Link href="/admin/my-listings">
                     <div
                       className=" cursor-pointer my-2 py-4 px-20  w-full rounded hover:bg-slate-400 hover:text-white"
                       onClick={() => setOpen(!open)}

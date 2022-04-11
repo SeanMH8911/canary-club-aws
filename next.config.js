@@ -16,4 +16,7 @@ module.exports = {
       "https://canaryclub0dbc3d9511ea40f6928b22162c07fbf1133456-dev.s3.eu-west-2.amazonaws.com/",
     ],
   },
+  env: {
+    Google_API_Key: "",
+  },
 };

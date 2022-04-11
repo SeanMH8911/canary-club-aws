@@ -16,6 +16,7 @@ type Rental
   MaxNumberOfGuest: Int
   MaxNumberOfAdults: Int
   MaxNumberOfChildren: Int
+  NumberofBeds: Int
   NumberOfBedrooms: Int
   NumberOfBaths: Int
   PricePerNight: Int

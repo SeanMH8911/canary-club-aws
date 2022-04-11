@@ -61,7 +61,7 @@ function EditRental() {
     ZipCode,
     Island,
     lat,
-    lon,
+    lng,
   } = rental;
 
   async function updateCurrentRental() {
@@ -80,7 +80,7 @@ function EditRental() {
       !ZipCode ||
       !Island ||
       !lat ||
-      !lon
+      !lng
     )
       return;
     const rentalUpdated = {
@@ -99,7 +99,7 @@ function EditRental() {
       ZipCode,
       Island,
       lat,
-      lon,
+      lng,
     };
     // check to see if there is a cover image and that it has been updated
     if (FeaturedImage && localImage) {
@@ -112,7 +112,7 @@ function EditRental() {
       variables: { input: rentalUpdated },
       authMode: "AMAZON_COGNITO_USER_POOLS",
     });
-    router.push("/my-listings");
+    router.push("/admin/my-listings");
   }
   return (
     <>
@@ -137,9 +137,8 @@ function EditRental() {
         <textarea
           onChange={onChange}
           name="description"
-          placeholder="description"
           value={rental.description}
-          className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"
+          className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 "
         />
         <div className="grid grid-cols-4">
           <div>
@@ -236,13 +235,17 @@ function EditRental() {
             />
           </div>
           <div>
-            <input
-              onChange={onChange}
+            <select
               name="Island"
-              placeholder="Island"
-              value={rental.Island}
-              className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
-            />
+              value={rental.island}
+              onChange={onChange}
+              className="border-b p-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 "
+            >
+              <option value="Tenerife">Tenerife</option>
+              <option value="Lanzarote">Lanzarote</option>
+              <option value="Fuerteventura">Fuerteventura</option>
+              <option value="Gran Canaria">Gran Canaria</option>
+            </select>
           </div>
           <div>
             <input
@@ -256,9 +259,9 @@ function EditRental() {
           <div>
             <input
               onChange={onChange}
-              name="lon"
+              name="lng"
               placeholder="Longitude"
-              value={rental.lon}
+              value={rental.lng}
               className="border-b pb-2 text-lg my-4 focus:outline-none font-light text-gray-500 placeholder-gray-500 y-2"
             />
           </div>
