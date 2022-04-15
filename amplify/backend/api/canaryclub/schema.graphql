@@ -23,11 +23,7 @@ type Rental
   AdditionalCosts: String
   FeaturedImage: String
   username: String
-    @index(
-      name: "postsByUsername"
-      # sortKeyFields: ["username"]
-      queryField: "postsByUsername"
-    )
+    @index(name: "postsByUsername", queryField: "postsByUsername")
   StreetName: String
   Area: String
   ZipCode: String
@@ -56,27 +52,3 @@ type User
   county: String
   postCode: String
 }
-
-# type User
-#   @model
-#   @auth(
-#     rules: [
-#       {
-#         allow: owner
-#         ownerField: "username"
-#         operations: [create, read, update, delete]
-#       }
-#       { allow: public, operations: [read] }
-#     ]
-#   ) {
-#   id: ID!
-#   FirstName: String!
-#   Surname: String!
-#   dateOfBirth: String!
-#   phoneNumber: String!
-#   country: String!
-#   streetAddress: String!
-#   city: String!
-#   county: String!
-#   postCode: String!
-# }
